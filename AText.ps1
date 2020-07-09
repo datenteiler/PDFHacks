@@ -2,6 +2,7 @@ Add-Type -Path $(Join-Path $pwd "itextsharp.dll")
 $doc  = New-Object iTextSharp.text.Document
 $stream = [IO.File]::OpenWrite($(Join-Path $pwd "TextPDF.pdf"))
 $writer = [itextsharp.text.pdf.PdfWriter]::GetInstance($doc, $stream)
+[void]$doc.AddTitle("The Title")
 [void]$doc.AddSubject("A Text")
 [void]$doc.AddAuthor("Christian Imhorst")
 $doc.Open()
